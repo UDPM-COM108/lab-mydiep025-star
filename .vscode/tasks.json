@@ -15,7 +15,7 @@
                 "cwd": "${fileDirname}"
             },
             "problemMatcher": [
-                "$gcc"
+                "$compileError"
             ],
             "group": {
                 "kind": "build",
