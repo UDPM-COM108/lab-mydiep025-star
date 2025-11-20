@@ -1,4 +1,4 @@
-# include <stdio.h>// thu vien
+# include <stdio.h>
 # include <math.h>
 # include <stdlib.h>
 int main () {
