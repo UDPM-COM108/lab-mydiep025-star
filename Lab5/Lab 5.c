@@ -60,7 +60,6 @@ int main () {
            printf("\nLua chon ban nhap khong hop le. Xin vui long chon lai!!!");
             break;
         }
-        
     } while (luachon != 0);
     return 0;
 }
