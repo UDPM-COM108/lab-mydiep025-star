@@ -22,7 +22,22 @@ int main () {
         scanf("%d", &luachon);
         switch (luachon) {
             case 1:
-                printf("\nNhap vao 1 so nguyen: ");
+                printf("\nNhap vao so min va max: ");
+                int min, max, i = min;
+                scanf("%d %d", &min, &max);
+                float tong = 0;
+                float bienDem = 0;
+                float trungBinh = 0;
+                while ( i <= max ) {
+                    if ( i  % 2 == 0 ) {
+                        tong += i;
+                        bienDem++;
+                    }
+                    trungBinh = tong / bienDem;
+                    printf("Tong cac so chia het cho 2 tu %d den %d la: %.2f\n", min, max, tong);
+                    printf("Trung binh cong cac so chia het cho 2 tu %d den %d la: %.2f\n", min, max, trungBinh);
+                    i++;
+                    }
                 break;
             case 2:
                 printf("\nnhap vao 2 so nguyen: ");
