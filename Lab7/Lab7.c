@@ -84,7 +84,7 @@ int main() {
     nhap(s);
     xuat(s);
     printf("Chuoi sau khi sap xep:\n");
-    sort(s)
+    sort(s);
     xuat(s);
     _getch();
     return 0;
