@@ -2,16 +2,36 @@
 #include <math.h>
 #include <stdlib.h>
 
-//Chuc nang 1
-void nhapcheckSoNguyen (int x, int count = 0) {
-    printf("\nNhap vao 1 so nguyen: ");
-    scanf("%d", &x);
-}
-void checksoNguyen (int x) {
-    if ( x == int x) {
-        printf("\n%d la so nguyen", x);
+//Chuc nang so 1: Kiem tra so nguyen
+void nhapcheckSoNguyen (int x) {
+    if (x == (int)x) {
+        printf("%d la so nguyen\n", x);
+    } else {
+        printf("%d khong phai la so nguyen\n", x);
     }
 }
+void soNguyento (int x, int count) {
+    for (int i = 2; i <= x / 2; i++) {
+        if (x % i == 0) {
+            count++;
+        }
+    }
+    if (count == 0) {
+        printf("%d la so nguyen to\n", x);
+    } else {
+        printf("%d khong phai la so nguyen to\n", x);
+    }
+}
+void soChinhPhuong (int x) {
+    int i = sqrt(x);
+    if (i * i == x) {
+        printf("%d la so chinh phuong\n", x);
+    } else {
+        printf("%d khong phai la so chinh phuong\n", x);
+    }
+}
+// Chuc nang so 2: Tim uoc so chung va boi so chung cua 2 so
+
 int main () {
     int luachon;
     do {
@@ -29,11 +49,17 @@ int main () {
         printf("9. Chuc nang so 9: Xay dung game FPOLY-LOTT(2/15)\n");
         printf("10. Chuc nang so 10: Xay dung chuong trinh tinh toan phan so\n");
         printf("0. Exit: Thoat khoi chuong trinh\n");
-        printf(" Nhap lua chon cua ban: ");
+        printf("Nhap lua chon cua ban: ");
         scanf("%d", &luachon);
         switch (luachon) {
             case 1:
-                printf("Nhap vao 1 so nguyen: %d \n");
+            int x;
+                printf("\nNhap vao so nguyen: ");
+                scanf("%d", &x);
+                nhapcheckSoNguyen(x);
+                soNguyento(x, 0);
+                soChinhPhuong(x);
+                printf("\n");
                 break;
             case 2:
                 printf("\n Nhap vao 2 so nguyen: ");
