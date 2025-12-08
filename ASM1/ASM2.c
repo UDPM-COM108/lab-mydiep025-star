@@ -31,6 +31,38 @@ void soChinhPhuong (int x) {
     }
 }
 // Chuc nang so 2: Tim uoc so chung va boi so chung cua 2 so
+// Chuc nang so 4: Tinh tien dien
+// Chuc nang so 6: Xay dung chuc nang tinh lai suat vay ngan hang vay tra gop
+void laisuatvaynganhang(float sotienvay, float laisuat, int thangvay) {
+    float tongtien;
+    tongtien = sotienvay + (sotienvay * laisuat * thangvay) / 100;
+    printf("Tong so tien phai tra sau %d thang la: %.2f VND\n", thangvay, tongtien);
+}
+void tiendien(int sodien) {
+    float bac1, bac2, bac3, bac4, bac5, bac6;
+
+    if ( sodien <= 50 ) {
+        bac1 = sodien * 1.678;
+        printf("So tien dien phai tra la: %.2f VND\n", bac1);
+    } else if (sodien <= 100) {
+        bac2 = sodien * 1.674 + 50 * 1.678;
+        printf("So tien dien phai tra la: %.2f VND\n", bac2);
+    } else if (sodien <= 200) {
+        bac3 = 50 * 1.678 + ( sodien - 50 ) * 1.734 + ( sodien - 100 ) * 2.014;
+        printf("So tien dien phai tra la: %.2f VND\n", bac3);
+    } else if (sodien <= 300) {
+        bac4 = 50 * 1.678 + 50 * 1.734 + 100 * 2.014 + ( sodien - 200 ) * 2.536;
+        printf("So tien dien phai tra la: %.2f VND\n", bac4);
+    } else if (sodien <= 400) {
+        bac5 = 50 * 1.678 + 50 * 1.734 + 100 * 2.014 + 100 * 2.536 + ( sodien - 300 ) * 2.834;
+        printf("So tien dien phai tra la: %.2f VND\n", bac5);
+    } else {
+        bac6 = 50 * 1.678 + 50 * 1.734 + 100 * 2.014 + 100 * 2.536 + 100 * 2.834 + ( sodien - 400 ) * 2.927;
+        printf("So tien dien phai tra la: %.2f VND\n", bac6);
+    }
+}
+
+
 
 int main () {
     int luachon;
@@ -62,13 +94,16 @@ int main () {
                 printf("\n");
                 break;
             case 2:
-                printf("\n Nhap vao 2 so nguyen: ");
+                printf("\nNhap vao 2 so nguyen: ");
                 break;
             case 3:
-                printf("\n Nhap vao gio bat dau, gio ket thuc: ");
+                printf("\nNhap vao gio bat dau, gio ket thuc: ");
                 break;
             case 4:
-                printf("\n Nhap vao so (kwh) dien su dung: ");
+                int sodien;
+                printf("\nNhap vao so (kwh) dien su dung: ");
+                scanf("%d", &sodien);
+                tiendien( sodien );
                 break;
             case 5:
                 printf("\n Nhap vao gio bat dau, gio ket thuc: ");
@@ -79,7 +114,7 @@ int main () {
             case 7: 
                 printf("\n Nhap so tien muon vay: ");
                 break;
-            case 8:
+            case 8: 
                 printf("\n Nhap vao so phan tram vay toi da: ");
                 break;
             case 9:
