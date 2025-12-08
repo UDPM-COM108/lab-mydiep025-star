@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
+#include <string.h>
 
 //Chuc nang so 1: Kiem tra so nguyen
 void nhapcheckSoNguyen (int x) {
@@ -30,17 +31,38 @@ void soChinhPhuong (int x) {
         printf("%d khong phai la so chinh phuong\n", x);
     }
 }
-// Chuc nang so 2: Tim uoc so chung va boi so chung cua 2 so
-// Chuc nang so 4: Tinh tien dien
-// Chuc nang so 6: Xay dung chuc nang tinh lai suat vay ngan hang vay tra gop
-void laisuatvaynganhang(float sotienvay, float laisuat, int thangvay) {
-    float tongtien;
-    tongtien = sotienvay + (sotienvay * laisuat * thangvay) / 100;
-    printf("Tong so tien phai tra sau %d thang la: %.2f VND\n", thangvay, tongtien);
+// Chuc nang so 2: Tim uoc so chung va boi so chung cua 2 sos
+int uocSoChung (int a, int b) {
+    while (a != b) {
+        if (a > b) {
+            a = a - b;
+        } else {
+            b = b - a;
+        }
+    }
+    return a;
 }
+int boiSoChung (int a, int b) {
+    return (a * b) / uocSoChung(a, b);
+}
+// Chuc nang so 3: Chuong trinh tinh tien cho quan Karaoke
+void tinhTienKaraoke (int giobatdau, int gioketthuc) {
+    int sogio = gioketthuc - giobatdau;
+    float tienthue;
+    if (sogio == 3 && giobatdau >= 14 && giobatdau <= 17 && gioketthuc < 21) {
+        tienthue = 150000*0.9; }
+    else if (sogio == 3 && giobatdau > 17 && gioketthuc < 21) {
+        tienthue = 150000; }
+    else if (sogio >= 4 && sogio <= 11 && giobatdau >= 14 && giobatdau <= 17 && gioketthuc < 21) { 
+        tienthue = (150000 + (sogio - 3)*35000)*0.9; }
+    else if (sogio >= 4 && giobatdau > 17 && gioketthuc < 21) {
+        tienthue = 150000 + 150000*0.7; } 
+    else { printf("Gio khong hop le, vui long nhap lai!\n"); }   
+    printf("So tien phai tra sau %d gio la: %.0f VND\n", sogio, tienthue);
+}
+// Chuc nang so 4: Tinh tien dien
 void tiendien(int sodien) {
     float bac1, bac2, bac3, bac4, bac5, bac6;
-
     if ( sodien <= 50 ) {
         bac1 = sodien * 1.678;
         printf("So tien dien phai tra la: %.2f VND\n", bac1);
@@ -61,6 +83,38 @@ void tiendien(int sodien) {
         printf("So tien dien phai tra la: %.2f VND\n", bac6);
     }
 }
+// Chuc nang so 5: Chuc nang doi tien
+
+
+// Chuc nang so 6: Xay dung chuc nang tinh lai suat vay ngan hang vay tra gop
+// Chuc nang so 7: Xay dung chuong trinh vay tien mua xe
+void vaytienmuaxe () {
+
+}
+// Chuc nang so 8: Sap xep thong tin sinh vien
+struct SinhVien {
+    int HoTen [50];
+    float Diem;
+} sv1;
+void hocluc (float Diem) {
+    if (Diem >= 9 && Diem <= 10) {
+        printf("Hoc luc: Xuat sac\n");
+    } else if (Diem >= 8 && Diem < 9) {
+        printf("Hoc luc: Gioi\n");
+    } else if (Diem >= 6.5 && Diem < 8) {
+        printf("Hoc luc: Kha\n");
+    } else if (Diem >= 5 && Diem < 6.5) {
+        printf("Hoc luc: Trung binh\n");
+    } else if (Diem >= 0 && Diem < 5) {
+        printf("Hoc luc: Yeu\n");
+    } else {
+        printf("Diem khong hop le\n");
+    }
+}   
+// Chuc nang so 9: Xay dung game FPOLY-LOTT(2/15)
+// Chuc nang so 10: Xay dung chuong trinh tinh toan phan so
+
+
 
 
 
@@ -97,7 +151,13 @@ int main () {
                 printf("\nNhap vao 2 so nguyen: ");
                 break;
             case 3:
-                printf("\nNhap vao gio bat dau, gio ket thuc: ");
+            int giobatdau;
+            int gioketthuc;
+                printf("\nNhap vao gio bat dau: ");
+                scanf("%d", &giobatdau);
+                printf("Nhap vao gio ket thuc: ");
+                scanf("%d", &gioketthuc);
+                tinhTienKaraoke( giobatdau, gioketthuc );
                 break;
             case 4:
                 int sodien;
@@ -105,23 +165,30 @@ int main () {
                 scanf("%d", &sodien);
                 tiendien( sodien );
                 break;
-            case 5:
-                printf("\n Nhap vao gio bat dau, gio ket thuc: ");
+            case 5: 
+                int sotien;
+                printf("\n Nhap vao so tien can doi: ");
+                scanf("%d", &sotien);
                 break;
             case 6: 
-                printf("\n Nhap vao so dien can doi: ");
-                break;
-            case 7: 
                 printf("\n Nhap so tien muon vay: ");
                 break;
-            case 8: 
-                printf("\n Nhap vao so phan tram vay toi da: ");
+            case 7: 
+                printf("\nNhap vao so phan tram vay toi da: ");
+                break;
+            case 8:
+                printf("\nNhap vao ho ten sinh vien: ");
+                scanf("%s", sv1.HoTen);
+                getchar();
+                printf("\nNhap vao diem trung binh sinh vien: ");
+                scanf("%f", &sv1.Diem);
+                hocluc(sv1.Diem);
+                printf("\n");
                 break;
             case 9:
-                printf("\n Nhap vao ho ten, diem cua sinh vien: ");
+                printf("\n Nhap vao tu ban phim 2 so (tu 01 -15): ");
                 break;
             case 10:
-                printf("\n Nhap vao tu ban phim 2 so (tu 01 -15): ");
                 break;
             case 0:
                 printf("\n Nhap vao tu ban phim 2 phan so: ");
@@ -132,3 +199,4 @@ int main () {
     } while ( luachon =! 0);
     return 0;
 }
+
