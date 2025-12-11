@@ -34,7 +34,7 @@ int main () {
         case 2: {
             int year;
             printf("\nNhap vao nam: ");
-            scanf("%d", &year);
+    scanf("%d", &year);
             if ((year % 4 && year % 100) || (year % 400 ))
             printf("%d la nam nhuan\n", year);
             else {
